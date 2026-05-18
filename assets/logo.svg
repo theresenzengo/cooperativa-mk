@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Emblème Cooperativa Mbanza Kongo">
+  <title>Emblème Cooperativa Mbanza Kongo</title>
+
+  <!-- Cercle extérieur sombre -->
+  <circle cx="200" cy="200" r="190" fill="none" stroke="#2B1810" stroke-width="4"/>
+  <circle cx="200" cy="200" r="178" fill="none" stroke="#2B1810" stroke-width="1.5"/>
+
+  <!-- Disque ocre central -->
+  <circle cx="200" cy="200" r="155" fill="#D4A574"/>
+  <circle cx="200" cy="200" r="155" fill="none" stroke="#2B1810" stroke-width="2.5"/>
+
+  <!-- Terre stylisée (arc en bas) -->
+  <path d="M 110,275 Q 200,300 290,275 L 290,305 L 110,305 Z" fill="#8B4513"/>
+  <path d="M 110,275 Q 200,300 290,275" fill="none" stroke="#2B1810" stroke-width="2"/>
+
+  <!-- Pousse centrale : tige -->
+  <line x1="200" y1="275" x2="200" y2="135" stroke="#4A6B3E" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Feuille gauche -->
+  <path d="M 200,213 Q 152,193 138,150 Q 175,170 200,185 Z" fill="#6B8E5A" stroke="#4A6B3E" stroke-width="1.8"/>
+  <!-- Feuille droite -->
+  <path d="M 200,213 Q 248,193 262,150 Q 225,170 200,185 Z" fill="#6B8E5A" stroke="#4A6B3E" stroke-width="1.8"/>
+  <!-- Feuille haute centrale -->
+  <path d="M 200,150 Q 178,115 200,90 Q 222,115 200,150 Z" fill="#4A6B3E" stroke="#2B1810" stroke-width="1.8"/>
+  <!-- Nervure centrale -->
+  <line x1="200" y1="150" x2="200" y2="98" stroke="#2B1810" stroke-width="1"/>
+</svg>

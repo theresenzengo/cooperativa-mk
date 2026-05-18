@@ -73,6 +73,9 @@ body::before {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 1.4rem;
@@ -82,7 +85,28 @@ body::before {
   line-height: 1.1;
 }
 
-.logo span {
+.logo-img {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--sauge-foncee);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Cacher l'ancien <span> inline qui était dans le logo */
+.logo > span {
   display: block;
   font-size: 0.7rem;
   font-weight: 500;
@@ -128,24 +152,39 @@ body::before {
 
 .lang-switch {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-items: center;
-  font-size: 0.85rem;
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
   border-left: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 .lang-switch a {
-  padding: 4px 10px;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   text-decoration: none;
-  color: var(--noir);
+  font-size: 1.3rem;
+  line-height: 1;
   transition: all 0.2s;
+  border: 2px solid transparent;
+  filter: grayscale(50%);
+  opacity: 0.6;
+}
+
+.lang-switch a:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .lang-switch a.active {
-  background: var(--terre);
-  color: var(--creme);
+  filter: grayscale(0%);
+  opacity: 1;
+  border-color: var(--terre);
+  background: var(--creme-doux);
 }
 
 .menu-toggle {
@@ -718,20 +757,58 @@ body::before {
 }
 
 .footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
 
-.footer-brand span {
-  display: block;
-  font-size: 0.75rem;
+.footer-brand-img {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  filter: brightness(1.1);
+}
+
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.footer-brand-text span {
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ocre);
   margin-top: 4px;
+}
+
+/* Logo dans section histoire (page accueil) */
+.section-with-logo {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.section-logo-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  justify-self: center;
+}
+
+@media (max-width: 800px) {
+  .section-with-logo {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .section-logo-img { max-width: 200px; }
 }
 
 .footer-desc {
