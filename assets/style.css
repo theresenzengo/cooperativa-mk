@@ -442,7 +442,7 @@ body::before {
 .card-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  display: block;
+  display: inline-block;
 }
 
 .card h3 {
@@ -734,6 +734,64 @@ body::before {
   margin-bottom: 1rem;
 }
 
+/* ============ ANIMATIONS ============ */
+
+/* Préférence d'accessibilité : si l'utilisateur veut moins d'animations, on les désactive */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Éléments qui apparaissent au scroll : état initial invisible + décalé */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Délais en cascade pour les éléments groupés (cartes, etc.) */
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+.reveal-delay-5 { transition-delay: 0.75s; }
+
+/* Animation des cartes au survol — l'icône bouge légèrement */
+.card .card-icon {
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .card-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Compteur de stats : transition douce lors de l'incrémentation */
+.stat-number {
+  transition: color 0.3s;
+}
+
+/* Effet parallax sur le hero — l'image se déplace plus lentement que le texte */
+.hero {
+  background-attachment: fixed;
+}
+
+/* Sur mobile, on désactive le parallax (problèmes de performance et de UX) */
+@media (max-width: 900px) {
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
 /* ============ FOOTER ============ */
 .footer {
   background: var(--noir);
@@ -906,14 +964,22 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.hero-text > * {
-  animation: fadeUp 0.8s ease-out backwards;
+/* L'animation initiale du hero text est immédiate au chargement (pas via scroll) */
+.hero-text.reveal {
+  /* on annule le système .reveal pour le hero qui a sa propre animation */
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
-.hero-text .eyebrow { animation-delay: 0.1s; }
-.hero-text h1 { animation-delay: 0.2s; }
-.hero-text .lede { animation-delay: 0.35s; }
-.hero-text .hero-cta { animation-delay: 0.5s; }
+.hero-text > * {
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.hero-text .eyebrow { animation-delay: 0.2s; }
+.hero-text h1 { animation-delay: 0.4s; }
+.hero-text .lede { animation-delay: 0.7s; }
+.hero-text .hero-cta { animation-delay: 1s; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
